@@ -1,2 +1,2 @@
 # ull-esit-inf-dsi-20-21-prct01-iaas-Zarlie
-ull-esit-inf-dsi-20-21-prct01-iaas-Zarlie created by GitHub Classroom
+Repositorio de la primera práctica de la asignatura de Desarrollo de Sistemas Informáticos
