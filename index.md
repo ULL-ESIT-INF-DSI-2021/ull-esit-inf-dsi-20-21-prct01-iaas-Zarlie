@@ -3,7 +3,7 @@
 ## Introducción
 En esta práctica llevaremos a cabo la configuración de la máquina virtual disponible a través del servicio IaaS de la ULL, además de la instalación y configuración de todas las herramientas necesarias para comenzar a trabajar en la asignatura de Desarrollo de Sistemas Informáticos.
 
-### Header 3
+## Objetivos
 
 - Bulleted
 - List
@@ -14,14 +14,5 @@ En esta práctica llevaremos a cabo la configuración de la máquina virtual dis
 **Bold** and _Italic_ and `Code` text
 
 [Link](url) and ![Image](src)
-```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/ULL-ESIT-INF-DSI-2021/ull-esit-inf-dsi-20-21-prct01-iaas-Zarlie/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+## Sección 1
