@@ -15,4 +15,6 @@ En esta práctica llevaremos a cabo la configuración de la máquina virtual dis
 
 [Link](url) and ![Image](src)
 
-## Sección 1
+## Configuración de la máquina virtual en el IAAS
+
+## Instalación de git y Node.js en la máquina virtual del IaaS
