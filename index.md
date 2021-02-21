@@ -42,7 +42,7 @@ Una vez cambiada la contraseña, procederemos a modificar el nombre de host de l
 usuario@ubuntu:~$ cat /etc/hostname
 ubuntu
 ```
-Como podemos ver, actualmente el nombre del equipo es "ubuntu", este lo podremos cambiar mediante un editor de texto como vi o vim y establecer el nombre que queramos. En nuestro caso, lo identificaremos bajo el nombre de nuestra máquina virtual *iaas-dsi36*:
+Como podemos ver, actualmente el nombre del equipo es "ubuntu", este lo podremos cambiar mediante un editor de texto como vi o vim y establecer el nombre que queramos. En nuestro caso, lo identificaremos bajo el nombre de nuestra máquina virtual **iaas-dsi36**:
 ```
 usuario@ubuntu:~$ sudo vim /etc/hostname
 usuario@ubuntu:~$ cat /etc/hostname
