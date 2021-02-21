@@ -175,7 +175,7 @@ usuario@iaas-dsi36:~$
 ```
 
 ### **Configuraciones en la máquina local**
-Por último, nos queda generar las claves pública-privada en nuestra máquina virtual exactamente como hicimos anteriormente en nuestra máquina local:
+Por último, nos queda generar el par de claves pública-privada en nuestra máquina virtual exactamente como hicimos anteriormente en nuestra máquina local:
 ```
 usuario@iaas-dsi36:~$ ssh-keygen
 Generating public/private rsa key pair.
