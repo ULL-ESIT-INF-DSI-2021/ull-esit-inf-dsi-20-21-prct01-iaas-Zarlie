@@ -22,6 +22,11 @@ Ahora bien, sabiendo que ya nos encontramos conectados a la VPN de la ULL para t
 ```
 ssh usuario@10.6.XXX.XXX
 ```
-como podemos observar, hemos ejecutado el comando ssh acompañado de un nombre de usuario y una dirección IP; en este caso, el nombre de usuario será "usuario" y la IP, la dirección IP que obtuvimos en el paso previo.
+como podemos observar, hemos ejecutado el comando ssh acompañado de un nombre de usuario y una dirección IP; en este caso, el nombre de usuario será "usuario" y la IP, la dirección IP que obtuvimos en el paso previo. Ahora nos aparecerá el siguiente mensaje, donde tendremos que introducir **"yes"**:
+```
+The authenticity of host '10.6.131.205 (10.6.131.205)' can't be established.
+ECDSA key fingerprint is SHA256:1Xm4M66FeBUSiykP7SqJgObwjmVs2gEouBhy1PTWDV4.
+Are you sure you want to continue connecting (yes/no/[fingerprint])?
+```
 
 ## Instalación de git y Node.js en la máquina virtual del IaaS
