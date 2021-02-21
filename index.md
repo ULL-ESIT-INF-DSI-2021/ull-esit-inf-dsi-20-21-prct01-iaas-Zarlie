@@ -1,13 +1,16 @@
-#  Práctica 1: Configuración de máquina virtual en el IaaS
+#  **Práctica 1: Configuración de máquina virtual en el IaaS**
 [Acceso al Github Pages](https://ull-esit-inf-dsi-2021.github.io/ull-esit-inf-dsi-20-21-prct01-iaas-Zarlie/)
 
 ## Introducción
 En esta práctica llevaremos a cabo la configuración de la máquina virtual que encontraremos disponible a través del servicio IaaS de la ULL, además de la instalación y configuración de todas las herramientas necesarias para comenzar a trabajar en la asignatura de Desarrollo de Sistemas Informáticos.
 
+
 ## Objetivos
 - Configurar la máquina virtual con la que trabajaremos en la asignatura
 - Familiarizarnos con el uso de Github y más concretamente, profundizar en el uso de Github Pages
+- Aprender a realizar conexiones en remoto mediante SSH
 - Hacer uso de las herramientas Markdown y Jekyll
+
 
 ## Configuración de la máquina virtual en el IAAS
 ### **Configuación de la VPN y acceso al IaaS**  
@@ -33,7 +36,7 @@ Ahora nos solicitará que introduzcamos una constraseña, la cual por defecto es
 
 
 ### **Modificación de los ficheros /etc/hostname y /etc/hosts**     
-Una vez cambiada la contraseña, procederemos a modificar el nombre de host de la máquina virtual. Para ello, ejecutaremos en la terminal el comando cat accediendo al fichero /etc/hostname para conocer el nombre actual del sistema (nombre del equipo):
+Una vez cambiada la contraseña, procederemos a modificar el nombre de host de la máquina virtual. Para ello, ejecutaremos en la terminal el comando cat accediendo al fichero */etc/hostname* para conocer el nombre actual del sistema (nombre del equipo):
 ```
 usuario@ubuntu:~$ cat /etc/hostname
 ubuntu
@@ -320,14 +323,18 @@ Now using node v15.8.0 (npm v7.5.1)
 
 
 ## Conclusiones
-
+Una vez acabadas todas las configuaciones necesarias de una máquina virtual en el IaaS así como de nuestra propia máquina local, se puede concluir que los resultados obtenidos tras la realización de la práctica han sido bastante satisfactorios. Por un lado, al ya haber configurado una máquina virtual del IaaS previamente en otras asignaturas y gracias a que el guión de la práctica está muy bien desglosado paso por paso, no ha resultado nada complejo el procedimiento de la misma, haciéndose un proceso bastante llevadero.  
+No han habido grandes complicaciones a lo largo del desarrollo de la práctica, lo más destacable podrían ser algunos conceptos con los que no estaba familiarizada de los que tuve que buscar información, pero debido ha ello ha sido una experiencia bastante positiva, puesto que me he visto obligada a indagar más en la búsqueda de esa información y adquirir los conocimientos necesarios para aclarar las dudas que me surgieron. Por otro lado, nunca había trabajo con Git o Github Pages y Github apenas lo había tocado muy por encima, por lo que espero que a lo largo de esta asignatura adquiera más soltura a la hora de trabajar con estas herramientas.
 
 
 ## Bibliografía
-- (https://debian-handbook.info/browse/es-ES/stable/sect.hostname-name-service.html)
-- (https://www.ionos.es/digitalguide/servidores/configuracion/archivo-hosts/)
-- (https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/hostname/)
-- (https://es.wikipedia.org/wiki/Archivo_hosts)
-- (https://www.linuxhispano.net/2013/05/03/diferencia-entre-apt-get-update-y-apt-get-upgrade/)
-- (https://www.tiendalinux.com/docs/manuales/redhat/rhl-rg-es-7.3/s1-ssh-configfiles.php3#:~:text=known_hosts%20%E2%80%94%20Este%20fichero%20contiene%20las,conectado%20al%20servidor%20SSH%20correcto.)
-- (https://uniwebsidad.com/libros/pro-git/capitulo-4/generando-tu-clave-publica-ssh)
+- [Guión de la práctica](https://ull-esit-inf-dsi-2021.github.io/prct01-iaas/)
+- [Nombre de equipo y configuación del servicio de nombres](https://debian-handbook.info/browse/es-ES/stable/sect.hostname-name-service.html)
+- [Archivo /etc/hosts](https://www.ionos.es/digitalguide/servidores/configuracion/archivo-hosts/)
+- - [Archivo hosts](https://es.wikipedia.org/wiki/Archivo_hosts)
+- [Todo sobre el hostname](https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/hostname/)
+- [Diferencia entre apt-get update y apt-get upgrade](https://www.linuxhispano.net/2013/05/03/diferencia-entre-apt-get-update-y-apt-get-upgrade/)
+- [Ficheros de configuración OpenSSH](https://www.tiendalinux.com/docs/manuales/redhat/rhl-rg-es-7.3/s1-ssh-configfiles.php3#:~:text=known_hosts%20%E2%80%94%20Este%20fichero%20contiene%20las,conectado%20al%20servidor%20SSH%20correcto.)
+- [Generando tu clave pública SSH](https://uniwebsidad.com/libros/pro-git/capitulo-4/generando-tu-clave-publica-ssh)
+- [Node Version Manager](https://github.com/nvm-sh/nvm)
+- [Node.js](https://www.toptal.com/nodejs/por-que-demonios-usaria-node-js-un-tutorial-caso-por-caso)
