@@ -236,7 +236,7 @@ Copiaremos la clave pública en nuestra máquina virtual:
 ```
 [~()]$cat ~/.ssh/id_rsa.pub
 ```
-Ahora accederemos a la configuración de nuestra cuenta de Github, y en la sección *SSH and GPG Keys* pulsaremos en *New SSH Key*. Aquí nos aparecerá un pequeño formulario en el que añadiremos un título para la clave (por ejemplo, usuario@iaas-dsiXX) y pegamos nuestra clave pública en la sección *key*. Aceptamos los cambios pulsando sobre el botón *Add SSH key* y ya estaría todo configurado.  
+Ahora accederemos a la configuración de nuestra cuenta de Github, y en la sección *SSH and GPG Keys* pulsaremos en *New SSH Key*. Aquí nos aparecerá un pequeño formulario en el que añadiremos un título para la clave (por ejemplo, usuario@iaas-dsiXX) y pegamos nuestra clave pública en el campo *key*. Aceptamos los cambios pulsando sobre el botón *Add SSH key* y ya estaría todo configurado.  
 Para asegurarnos de que todo funciona correctamente, ejecutaremos el siguiente comando en la máquina virtual para clonar un repositorio:
 ```
 [~()]$git clone git@github.com:ULL-ESIT-INF-DSI-2021/prct01-iaas-vscode.git
@@ -252,12 +252,12 @@ prct01-iaas-vscode
 [~()]$cd prct01-iaas-vscode/
 [~/prct01-iaas-vscode(main)]$
 ```
-Podemos observar que la ejecución se ha realizado correctamente y que el repositorio almacenado en Github ha sido clonado satisfactoriamente sin necesidad de introducir ningún tipo de credenciales. También podemos observar que el prompt del sistema funciona correctamente ya que, como podemos ver, está mostrando la rama actual de trabajo al acceder al directorio asociado al repositorio de git *prct01-iaas-vscode*.
+Podemos observar que la ejecución se ha realizado correctamente y que el repositorio almacenado en Github ha sido clonado satisfactoriamente sin necesidad de introducir ningún tipo de credenciales. También podemos observar que el prompt del sistema funciona correctamente ya que está mostrando la rama actual de trabajo al acceder al directorio asociado al repositorio de git *prct01-iaas-vscode*.
 
 
 
 ### **Configuración de Node Version Manager (nvm)**
-En este apartado, instalaremos el gestor de versiones de Node.js, también conocido como Node Version Manager (nvm). Lo necesitaremos para poder trabajar en el entorno de Node.js para la ejecucuón de código en lenguajes como JavaScript o TypeScript que daremos a lo largo de la asignatura de Desarrollo de Sistemas Informáticos.  
+En este apartado, instalaremos el gestor de versiones de Node.js, también conocido como Node Version Manager (nvm). Lo necesitaremos para poder trabajar en el entorno de Node.js para la ejecución de código en lenguajes como JavaScript o TypeScript que daremos a lo largo de la asignatura de Desarrollo de Sistemas Informáticos.  
 
 Empezaremos instalando el nvm:
 ```
@@ -325,7 +325,7 @@ Now using node v15.8.0 (npm v7.5.1)
 
 
 ## Conclusiones
-Una vez acabadas todas las configuaciones necesarias de una máquina virtual en el IaaS así como de nuestra propia máquina local, se puede concluir que los resultados obtenidos tras la realización de la práctica han sido bastante satisfactorios. Por un lado, al ya haber configurado una máquina virtual del IaaS previamente en otras asignaturas y gracias a que el guión de la práctica está muy bien desglosado paso por paso, no ha resultado nada complejo el procedimiento de la misma, haciéndose un proceso bastante llevadero.  
+Una vez acabadas todas las configuraciones necesarias de una máquina virtual en el IaaS así como de nuestra propia máquina local, se puede concluir que los resultados obtenidos tras la realización de la práctica han sido bastante satisfactorios. Por un lado, al ya haber configurado una máquina virtual del IaaS previamente en otras asignaturas y gracias a que el guión de la práctica está muy bien desglosado paso por paso, no ha resultado nada complejo el procedimiento de la misma, haciéndose un proceso bastante llevadero.  
 No han habido grandes complicaciones a lo largo del desarrollo de la práctica, lo más destacable podrían ser algunos conceptos con los que no estaba familiarizada de los que tuve que buscar información, pero debido ha ello ha sido una experiencia bastante positiva, puesto que me he visto obligada a indagar más en la búsqueda de esa información y adquirir los conocimientos necesarios para aclarar las dudas que me surgieron. Por otro lado, nunca había trabajo con Git o Github Pages y Github apenas lo había tocado muy por encima, por lo que espero que a lo largo de esta asignatura adquiera más soltura a la hora de trabajar con estas herramientas.
 
 
