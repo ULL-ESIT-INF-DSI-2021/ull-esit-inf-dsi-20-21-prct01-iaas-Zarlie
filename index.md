@@ -31,13 +31,13 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 Ahora nos solicitará que introduzcamos una constraseña, la cual por defecto es "usuario". Una vez introducida, el sistema nos pedirá que la modifiquemos siguiendo 3 sencillos pasos: introducir la contraseña actual (usuario), introducir la nueva contraseña, y confirmar de nuevo la nueva contraseña. Una vez realizado este paso, tendremos que iniciar una nueva conexión SSH con nuestra máquina introduciendo esta vez la nueva contraseña.
 
 
-### **Modificación del nombre de host de la máquina virtual**     
+### **Modificación de los ficheros /etc/hostname y /etc/hosts**     
 Una vez cambiada la contraseña, procederemos a modificar el nombre de host de la máquina virtual. Para ello, ejecutaremos en la terminal el comando cat accediendo al fichero /etc/hostname para conocer el nombre actual del sistema (nombre del equipo):
 ```
 usuario@ubuntu:~$ cat /etc/hostname
 ubuntu
 ```
-Como podemos ver, actualmente el nombre del equipo es "ubuntu", este lo podremos cambiar ejecutando el comando vi o vim para abrir un editor de texto y establecer el nombre que queramos. En nuestro caso, lo identificaremos bajo el nombre de nuestra máquina virtual *iaas-dsi36*:
+Como podemos ver, actualmente el nombre del equipo es "ubuntu", este lo podremos cambiar mediante un editor de texto como vi o vim y establecer el nombre que queramos. En nuestro caso, lo identificaremos bajo el nombre de nuestra máquina virtual *iaas-dsi36*:
 ```
 usuario@ubuntu:~$ sudo vim /etc/hostname
 usuario@ubuntu:~$ cat /etc/hostname
@@ -50,9 +50,9 @@ usuario@ubuntu:~$ cat /etc/hosts
 127.0.1.1   ubuntu
 
 #The following lines are desireble for IPv6 capable hosts
-::1       localhost ip6-localhost ip6-loopback
-ff02::1   ip6-allnoders
-ff02::2   ip6-allrouters
+::1         localhost ip6-localhost ip6-loopback
+ff02::1     ip6-allnoders
+ff02::2     ip6-allrouters
 
 usuario@ubuntu:~$ sudo vim /etc/hosts
 usuario@ubuntu:~$ cat /etc/hosts
@@ -65,7 +65,7 @@ Una vez hayamos completado todos los pasos anterioremos, pasaremos a actualizar 
 usuario@ubuntu:~$ sudo apt update
 Leyendo lista de paquetes... Hecho
 Creando árbol de independencias
-Leyendo la inforkmación de estado... Hecho
+Leyendo la información de estado... Hecho
 ...
 
 usuario@ubuntu:~$ sudo apt upgrade
@@ -78,6 +78,20 @@ Connection to 10.6.131.205 closed by remote host.
 Connection to 10.6.131.205 closed.
 ```
 
+## Configuraciones en la máquina local
+Una vez acabado el reinicio, volveremos a editar el fichero de hosts, pero esta vez de la máquina local. En ella, añadiremos la información de conexión a la máquina virtual para no tener que estar recurriendo constantemente a la dirección IP de la máquina virtual:
+```
+zarlie@melinux-VirtualBox:~$ cat /etc/hosts
+127.0.0.1     localhost
+127.0.1.1     melinux-VirtualBox
+...
+zarlie@melinux-VirtualBox:~$ vim /etc/hosts
+zarlie@melinux-VirtualBox:~$ cat /etc/hosts
+127.0.0.1     localhost
+127.0.1.1     melinux-VirtualBox
+10.6.131.205  iaas-dsi36
+...
+```
 
 
 ## Instalación de git y Node.js en la máquina virtual del IaaS
