@@ -22,11 +22,45 @@ Ahora bien, sabiendo que ya nos encontramos conectados a la VPN de la ULL para t
 ```
 ssh usuario@10.6.XXX.XXX
 ```
-como podemos observar, hemos ejecutado el comando ssh acompañado de un nombre de usuario y una dirección IP; en este caso, el nombre de usuario será "usuario" y la IP, la dirección IP que obtuvimos en el paso previo. Ahora nos aparecerá el siguiente mensaje, donde tendremos que introducir **"yes"**:
+Como podemos observar, hemos ejecutado el comando ssh acompañado de un nombre de usuario y una dirección IP; en este caso, el nombre de usuario será "usuario" y la IP, la dirección IP que obtuvimos en el paso previo. Ahora nos aparecerá el siguiente mensaje, donde tendremos que introducir **"yes"**:
 ```
 The authenticity of host '10.6.131.205 (10.6.131.205)' can't be established.
 ECDSA key fingerprint is SHA256:1Xm4M66FeBUSiykP7SqJgObwjmVs2gEouBhy1PTWDV4.
 Are you sure you want to continue connecting (yes/no/[fingerprint])?
 ```
+Ahora nos solicitará que introduzcamos una constraseña, la cual por defecto es "usuario". Una vez introducida, el sistema nos pedirá que la modifiquemos siguiendo 3 sencillos pasos: introducir la contraseña actual (usuario), introducir la nueva contraseña, y confirmar de nuevo la nueva contraseña. Una vez realizado este paso, tendremos que iniciar una nueva conexión SSH con nuestra máquina introduciendo esta vez la nueva contraseña.
+
+
+### **Modificación del nombre de host de la máquina virtual**     
+Una vez cambiada la contraseña, procederemos a modificar el nombre de host de la máquina virtual. Para ello, ejecutaremos en la terminal el comando cat accediendo al fichero /etc/hostname para conocer el nombre actual del sistema (nombre del equipo):
+```
+usuario@ubuntu:~$ cat /etc/hostname
+ubuntu
+```
+Como podemos ver, actualmente el nombre del equipo es "ubuntu", este lo podremos cambiar ejecutando el comando vi o vim para abrir un editor de texto y establecer el nombre que queramos. En nuestro caso, lo identificaremos bajo el nombre de nuestra máquina virtual *iaas-dsi36*:
+```
+usuario@ubuntu:~$ sudo vim /etc/hostname
+usuario@ubuntu:~$ cat /etc/hostname
+iaas-dsi36
+```
+Además, también modificaremos el archivo /etc/hosts, donde se guarda la correspondencia entre dominios de Internet y direcciones IP:
+```
+usuario@ubuntu:~$ cat /etc/hosts
+127.0.0.1   localhost
+127.0.1.1   ubuntu
+
+#The following lines are desireble for IPv6 capable hosts
+::1       localhost ip6-localhost ip6-loopback
+ff02::1   ip6-allnoders
+ff02::2   ip6-allrouters
+usuario@ubuntu:~$ sudo vim /etc/hosts
+usuario@ubuntu:~$ cat /etc/hosts
+127.0.0.1   localhost
+127.0.1.1   iaas-dsi36
+...
+```
+
+
+
 
 ## Instalación de git y Node.js en la máquina virtual del IaaS
