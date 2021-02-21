@@ -7,7 +7,7 @@ En esta práctica llevaremos a cabo la configuración de la máquina virtual que
 
 ## Objetivos
 - Configurar la máquina virtual con la que trabajaremos en la asignatura
-- Familiarizarnos con el uso de Github y más concretamente, profundizar en el uso de Github Pages
+- Familiarizarnos con el uso de Git, Github y más concretamente, profundizar en el uso de Github Pages
 - Aprender a realizar conexiones en remoto mediante SSH
 - Hacer uso de las herramientas Markdown y Jekyll
 
@@ -333,7 +333,7 @@ No han habido grandes complicaciones a lo largo del desarrollo de la práctica, 
 - [Introducción al Markdown](https://guides.github.com/features/mastering-markdown/)
 - [Nombre de equipo y configuación del servicio de nombres](https://debian-handbook.info/browse/es-ES/stable/sect.hostname-name-service.html)
 - [Archivo /etc/hosts](https://www.ionos.es/digitalguide/servidores/configuracion/archivo-hosts/)
-- - [Archivo hosts](https://es.wikipedia.org/wiki/Archivo_hosts)
+- [Archivo hosts](https://es.wikipedia.org/wiki/Archivo_hosts)
 - [Todo sobre el hostname](https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/hostname/)
 - [Diferencia entre apt-get update y apt-get upgrade](https://www.linuxhispano.net/2013/05/03/diferencia-entre-apt-get-update-y-apt-get-upgrade/)
 - [Ficheros de configuración OpenSSH](https://www.tiendalinux.com/docs/manuales/redhat/rhl-rg-es-7.3/s1-ssh-configfiles.php3#:~:text=known_hosts%20%E2%80%94%20Este%20fichero%20contiene%20las,conectado%20al%20servidor%20SSH%20correcto.)
