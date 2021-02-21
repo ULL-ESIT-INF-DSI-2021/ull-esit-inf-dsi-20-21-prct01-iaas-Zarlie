@@ -21,13 +21,13 @@ Una vez estemos conectados a la VPN, accederemos al [Servicio IaaS de la ULL](ht
 
 
 ### **Dirección IP de la máquina y conexión a la misma por SSH**      
-Una vez dentro de nuestra máquina virtual, buscaremos en la parte derecha de la interfaz la sección de *Interfaces de red*, en ella podremos identificar la IP asignada a la interfaz de nuestra máquina la cual estará bajo la forma 10.6.XXX.XXX; en nuestro caso será 10.6.131.205. Esta IP nos servirá de ayuda para poder conectarnos por SSH a nuestra máquina virtual. 
+Una vez dentro de nuestra máquina virtual, buscaremos en la parte derecha de la interfaz la sección de *Interfaces de red*, en ella podremos identificar la IP asignada a la interfaz de nuestra máquina la cual estará bajo la forma 10.6.XXX.XXX; en mi caso será 10.6.131.205. Esta IP nos servirá de ayuda para poder conectarnos por SSH a nuestra máquina virtual. 
 
 Ahora bien, sabiendo que ya nos encontramos conectados a la VPN de la ULL para trabajar con la máquina virtual del IaaS y que poseemos la IP de dicha máquina, ya podremos conectarnos a ella por SSH. Para ello debemos abrir una terminal en nuestra máquina local y teclear lo siguiente:  
 ```
 ssh usuario@10.6.XXX.XXX
 ```
-Como podemos observar, hemos ejecutado el comando ssh acompañado de un nombre de usuario y una dirección IP; en este caso, el nombre de usuario será "usuario" y la IP, la dirección IP que obtuvimos en el paso previo. Ahora nos aparecerá el siguiente mensaje, donde tendremos que introducir **"yes"**:
+Como podemos observar, hemos ejecutado el comando ssh acompañado de un nombre de usuario y una dirección IP; en este caso, el nombre de usuario es "usuario" y la IP, la dirección IP que obtuvimos en el paso previo. Ahora nos aparecerá el siguiente mensaje, donde tendremos que introducir **"yes"** para poder continuar:
 ```
 The authenticity of host '10.6.131.205 (10.6.131.205)' can't be established.
 ECDSA key fingerprint is SHA256:1Xm4M66FeBUSiykP7SqJgObwjmVs2gEouBhy1PTWDV4.
@@ -36,7 +36,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 Ahora nos solicitará que introduzcamos una constraseña, la cual por defecto es "usuario". Una vez introducida, el sistema nos pedirá que la modifiquemos siguiendo 3 sencillos pasos: introducir la contraseña actual (usuario), introducir la nueva contraseña, y confirmar de nuevo la nueva contraseña. Una vez realizado este paso, tendremos que iniciar una nueva conexión SSH con nuestra máquina introduciendo esta vez la nueva contraseña.
 
 
-### **Modificación de los ficheros /etc/hostname y /etc/hosts**     
+### **Modificación de los ficheros */etc/hostname* y */etc/hosts***     
 Una vez cambiada la contraseña, procederemos a modificar el nombre de host de la máquina virtual. Para ello, ejecutaremos en la terminal el comando cat accediendo al fichero */etc/hostname* para conocer el nombre actual del sistema (nombre del equipo):
 ```
 usuario@ubuntu:~$ cat /etc/hostname
