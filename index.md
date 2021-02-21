@@ -329,6 +329,8 @@ No han habido grandes complicaciones a lo largo del desarrollo de la práctica, 
 
 ## Bibliografía
 - [Guión de la práctica](https://ull-esit-inf-dsi-2021.github.io/prct01-iaas/)
+- [Documentación de configuración de la VPN de la ULL](https://www.ull.es/servicios/stic/2020/12/01/servicio-de-vpn-de-la-ull/)
+- [Introducción al Markdown](https://guides.github.com/features/mastering-markdown/)
 - [Nombre de equipo y configuación del servicio de nombres](https://debian-handbook.info/browse/es-ES/stable/sect.hostname-name-service.html)
 - [Archivo /etc/hosts](https://www.ionos.es/digitalguide/servidores/configuracion/archivo-hosts/)
 - - [Archivo hosts](https://es.wikipedia.org/wiki/Archivo_hosts)
@@ -336,5 +338,6 @@ No han habido grandes complicaciones a lo largo del desarrollo de la práctica, 
 - [Diferencia entre apt-get update y apt-get upgrade](https://www.linuxhispano.net/2013/05/03/diferencia-entre-apt-get-update-y-apt-get-upgrade/)
 - [Ficheros de configuración OpenSSH](https://www.tiendalinux.com/docs/manuales/redhat/rhl-rg-es-7.3/s1-ssh-configfiles.php3#:~:text=known_hosts%20%E2%80%94%20Este%20fichero%20contiene%20las,conectado%20al%20servidor%20SSH%20correcto.)
 - [Generando tu clave pública SSH](https://uniwebsidad.com/libros/pro-git/capitulo-4/generando-tu-clave-publica-ssh)
+- [Script del git-prompt](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh)
 - [Node Version Manager](https://github.com/nvm-sh/nvm)
 - [Node.js](https://www.toptal.com/nodejs/por-que-demonios-usaria-node-js-un-tutorial-caso-por-caso)
