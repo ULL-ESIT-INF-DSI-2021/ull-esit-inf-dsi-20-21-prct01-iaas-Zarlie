@@ -48,7 +48,7 @@ usuario@ubuntu:~$ sudo vim /etc/hostname
 usuario@ubuntu:~$ cat /etc/hostname
 iaas-dsi36
 ```
-Además, también modificaremos el archivo /etc/hosts, donde se guarda la correspondencia entre dominios de Internet y direcciones IP. En él, cambiaremos el antiguo nombre de host ubuntu por el nombre de host (en mi caso iaas-dsi36):
+Además, también modificaremos el archivo */etc/hosts*, donde se guarda la correspondencia entre dominios de Internet y direcciones IP. En él, cambiaremos el antiguo nombre de host "ubuntu" por el nombre de host:
 ```
 usuario@ubuntu:~$ cat /etc/hosts
 127.0.0.1   localhost
