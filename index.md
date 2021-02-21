@@ -10,8 +10,8 @@ En esta práctica llevaremos a cabo la configuración de la máquina virtual que
 - Configurar la máquina virtual con la que trabajaremos en la asignatura
 - Familiarizarnos con el uso de Git, Github y más concretamente, profundizar en el uso de Github Pages
 - Aprender a realizar conexiones en remoto mediante SSH
-- Hacer uso de las herramientas Markdown y Jekyll
-
+- Hacer uso de las herramientas Markdown y Jekyll  
+  
 
 ## Configuración de la máquina virtual en el IAAS
 ### **Configuación de la VPN y acceso al IaaS**  
