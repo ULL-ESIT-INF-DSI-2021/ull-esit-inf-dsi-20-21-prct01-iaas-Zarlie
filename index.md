@@ -1,5 +1,5 @@
 #  Práctica 1: Configuración de máquina virtual en el IaaS
-[Página web](https://ull-esit-inf-dsi-2021.github.io/ull-esit-inf-dsi-20-21-prct01-iaas-Zarlie/)
+[Acceso al Github Pages](https://ull-esit-inf-dsi-2021.github.io/ull-esit-inf-dsi-20-21-prct01-iaas-Zarlie/)
 
 ## Introducción
 En esta práctica llevaremos a cabo la configuración de la máquina virtual que encontraremos disponible a través del servicio IaaS de la ULL, además de la instalación y configuración de todas las herramientas necesarias para comenzar a trabajar en la asignatura de Desarrollo de Sistemas Informáticos.
@@ -79,7 +79,7 @@ Connection to 10.6.131.205 closed by remote host.
 Connection to 10.6.131.205 closed.
 ```
 
-## Configuraciones en la máquina local
+### **Configuraciones en la máquina local**
 Una vez acabado el reinicio, volveremos a editar el fichero de hosts, pero esta vez de la máquina local. En ella, añadiremos la información de conexión a la máquina virtual para no tener que estar recurriendo constantemente a la dirección IP de la máquina virtual:
 ```
 zarlie@melinux-VirtualBox:~$ cat /etc/hosts
@@ -169,7 +169,7 @@ Last login: Sun Feb  21 19:38:00 2021 from 10.20.52.107
 usuario@iaas-dsi36:~$
 ```
 
-## Configuraciones en la máquina local
+### **Configuraciones en la máquina local**
 Por último, nos queda generar las claves pública-privada en nuestra máquina virtual exactamente como hicimos anteriormente en nuestra máquina local:
 ```
 usuario@iaas-dsi36:~$ ssh-keygen
@@ -188,6 +188,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfCKDPGn7qLhwmjKCYaCBeOZVObmdHQ/GFOYALTU1L
 
 
 ## Instalación de git y Node.js en la máquina virtual del IaaS
+### **Configuración de Git**  
 Comenzaremos instalando git en nuestra máquina virtual:
 ```
 usuario@iaas-dsi36:~$ sudo apt install git
@@ -198,8 +199,127 @@ git ya está en su versión más reciente (1:2.25.1-1ubuntu3).
 Los paquetes indicados a continuación se instalaron de forma automática y ya no son necesarios.
 ...
 ```
+Una vez instalado, configuraremos algunos aspectos de Git como establecer un nombre de usuario así como la dirección de correo electrónico:
+```
+usuario@iaas-dsi36:~$ git config --global user.name "Melissa Díaz"
+usuario@iaas-dsi36:~$ git config --global user.email alu0101134468@ull.edu.es
+usuario@iaas-dsi36:~$ git config --list
+user.name=Melissa Díaz
+user.email=alu0101134468@ull.edu.es
+```
 
 
+### **Configuración de Git**  
+A continuación, configuraremos el prompt de la terminal de nuestra máquina virtual para que nos aparezca la rama actual en la que nos encontramos cuando accedemos a algún directorio que resulta estar asociado a un repositorio git. Para ello, deberemos descargar el script [git prompt](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh) y configurarlo en nuestra máquina; en este caso, hemos copiado el contenido de dicho script en un nuevo fichero bajo el nombre de *git-prompt.sh* y por otro lado, hemos modificado el fichero *~/.bashrc*, incluyendo al final del mismo dos lineas que aparecen en el código a continuación:
+```
+usuario@iaas-dsi36:~$ mv git-prompt.sh .git-prompt.sh
+usuario@iaas-dsi36:~$ vi .bashrc
+usuario@iaas-dsi36:~$ tail .bashrc
+...
+source ~/.git-prompt.sh
+PS1='\[\033]0;\u@\h:\w\007\]\[\033[0;34m\][\[\033[0;31m\]\w\[\033[0;32m\]($(git branch 2>/dev/null | sed -n "s/\* \(.*\)/\1/p"))\[\033[0;34m\]]$'
+```
+
+Y reiniciamos la terminal:
+```
+usuario@iaas-dsi36:~$ exec bash -l
+[~()]$
+```
+
+Para comprobar que el prompt realmente está mostrando lo que deseamos (la rama actual de trabajo al acceder a un directorio asociado a un repositorio), añadiremos la clave pública de la máuina virtual dentro de la configuación de las claves en nuestra cuenta de Github, para facilitarnos el trabajo con repositorios remotos o con clonaciones de los mismos.  
+Copiaremos la clave pública en nuestra máquina virtual:
+```
+[~()]$cat ~/.ssh/id_rsa.pub
+```
+Ahora accederemos a la configuración de nuestra cuenta de Github, y en la sección *SSH and GPG Keys* pulsaremos en *New SSH Key*. Aquí nos aparecerá un pequeño formulario en el que añadiremos un título para la clave (por ejemplo, usuario@iaas-dsiXX) y pegamos nuestra clave pública en la sección *key*. Aceptamos los cambios pulsando sobre el botón *Add SSH key* y ya estaría todo configurado.  
+Para asegurarnos de que todo funciona correctamente, ejecutaremos el siguiente comando en la máquina virtual para clonar un repositorio:
+```
+[~()]$git clone git@github.com:ULL-ESIT-INF-DSI-2021/prct01-iaas-vscode.git
+Clonando en 'prct01-iaas-vscode'...
+remote: Enumerating objects: 156, done.
+remote: Counting objects: 100% (156/156), done.
+remote: Compressing objects: 100% (117/117), done.
+remote: Total 156 (delta 67), reused 85 (delta 34), pack-reused 0
+Recibiendo objetos: 100% (156/156), 351.19 KiB | 1.33 MiB/s, listo.
+Resolviendo deltas: 100% (67/67), listo.
+[~()]$ls
+prct01-iaas-vscode
+[~()]$cd prct01-iaas-vscode/
+[~/prct01-iaas-vscode(main)]$
+```
+Podemos observar que la ejecución se ha realizado correctamente y que el repositorio almacenado en Github ha sido clonado satisfactoriamente sin necesidad de introducir ningún tipo de credenciales. También podemos observar que el prompt del sistema funciona correctamente ya que, como podemos ver, está mostrando la rama actual de trabajo al acceder al directorio asociado al repositorio de git *prct01-iaas-vscode*.
+
+
+
+### **Configuración de Node Version Manager (nvm)**
+En este apartado, instalaremos el gestor de versiones de Node.js, también conocido como Node Version Manager (nvm). Lo necesitaremos para poder trabajar en el entorno de Node.js para la ejecucuón de código en lenguajes como JavaScript o TypeScript que daremos a lo largo de la asignatura de Desarrollo de Sistemas Informáticos.  
+
+Empezaremos instalando el nvm:
+```
+[~()]$wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash
+[~()]$exec bash -l
+[~()]$nvm --version
+0.37.2
+```
+A continuación, procederemos a instalar la versión más reciente de Node.js:
+```
+[~()]$nvm install node
+Downloading and installing node v15.9.0...
+Downloading https://nodejs.org/dist/v15.9.0/node-v15.9.0-linux-x64.tar.xz...
+####################################################################################################################################################################################### 100,0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v15.9.0 (npm v7.5.3)
+Creating default alias: default -> node (-> v15.9.0)
+[~()]$node --version
+v15.9.0
+[~()]$npm --version
+7.5.3
+```
+Observamos que se ha instalado la última versión de nvm (15.9.0) correctamente. Si quisiéramos instalar una versión diferente a la que tenemos instalada, nos bastaría con indicarlo bajo los siguientes comandos:
+```
+[~()]$nvm install 12.0.0
+...
+Now using node v12.0.0 (npm v6.9.0)
+[~()]$node --version
+v12.0.0
+[~()]$npm --version
+6.9.0
+```
+Finalmente, para realizar cambios entre versiones, podríamos hacerlo ejecutando los siguientes comandos:
+```
+[~()]$nvm list
+->      v12.0.0
+        v15.9.0
+default -> node (-> v15.9.0)
+iojs -> N/A (default)
+unstable -> N/A (default)
+node -> stable (-> v15.9.0) (default)
+stable -> 15.9 (-> v15.9.0) (default)
+lts/* -> lts/fermium (-> N/A)
+lts/argon -> v4.9.1 (-> N/A)
+lts/boron -> v6.17.1 (-> N/A)
+lts/carbon -> v8.17.0 (-> N/A)
+lts/dubnium -> v10.23.3 (-> N/A)
+lts/erbium -> v12.20.2 (-> N/A)
+lts/fermium -> v14.15.5 (-> N/A)
+
+[~()]$nvm use v15.8.0 
+N/A: version "v15.8.0 -> N/A" is not yet installed.
+You need to run "nvm install v15.8.0" to install it before using it.
+
+[~()]$node --version
+v15.9.0
+[~()]$npm --version
+7.5.3
+[~()]$nvm install v15.8.0
+Downloading and installing node v15.8.0...
+...
+Now using node v15.8.0 (npm v7.5.1)
+```
+
+
+## Conclusiones
 
 
 
