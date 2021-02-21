@@ -16,9 +16,11 @@ En primer lugar, para comenzar esta práctica debemos configurar el servicio VPN
 Una vez estemos conectados a la VPN, accederemos al [Servicio IaaS de la ULL](https://iaas.ull.es/) donde introduciremos nuestras credenciales ULL. Acto seguido, se mostrará un panel en el que puede que nos encontremos con más de una máquina virtual, las cuales correspondan a otras asignaturas del grado asociadas a nuestra cuenta. Ahora nos tocará localizar la máquina virtual de la asignatura la cual tendrá el nombre de *DSI* y pulsaremos sobre el botón de *Ejecutar*. Tras esperar unos segundos, podremos visualizar que se nos ha asignado una máquina virtual del pool de máquinas virtuales de la asignatura, ya que nuestra máquina pasará a tener un número como sufijo, por ejemplo, en mi caso trabajaré con la máquina DSI-36.
 
 ### Dirección IP de la máquina y conexión a la misma por SSH    
-Haga clic en el nombre de su máquina virtual y, en la parte derecha de la interfaz, donde se indica Interfaces de red, podrá conocer la IP asignada a la interfaz de su máquina. Conociendo dicha IP, ya podrá conectarse por SSH a su máquina. 
+Una vez dentro de nuestra máquina virtual, buscaremos en la parte derecha de la interfaz la sección de *Interfaces de red*, en ella podremos identificar la IP asignada a la interfaz de nuestra máquina la cual estará bajo la forma 10.6.XXX.XXX; en nuestro caso será 10.6.131.205. Esta IP nos servirá de ayuda para poder conectarnos por SSH a nuestra máquina virtual. 
 
-Es importante recordar que siempre tiene que estar conectado a la VPN de la ULL para trabajar con una máquina virtual del IaaS. Para conectarse por SSH a su máquina virtual, abra una terminal y teclee lo siguiente:
-
+Ahora bien, sabiendo que ya nos encontramos conectados a la VPN de la ULL para trabajar con la máquina virtual del IaaS y que poseemos la IP de dicha máquina, ya podremos conectarnos a ella por SSH. Para ello debemos abrir una terminal y teclear lo siguiente:  
+```
+ssh usuario@10.6.XXX.XXX
+```
 
 ## Instalación de git y Node.js en la máquina virtual del IaaS
