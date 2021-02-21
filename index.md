@@ -204,7 +204,7 @@ git ya está en su versión más reciente (1:2.25.1-1ubuntu3).
 Los paquetes indicados a continuación se instalaron de forma automática y ya no son necesarios.
 ...
 ```
-Una vez instalado, configuraremos algunos aspectos de Git como establecer un nombre de usuario así como la dirección de correo electrónico:
+Una vez instalado, configuraremos algunos aspectos de Git como establecer un nombre de usuario y la dirección de correo electrónico:
 ```
 usuario@iaas-dsi36:~$ git config --global user.name "Melissa Díaz"
 usuario@iaas-dsi36:~$ git config --global user.email alu0101134468@ull.edu.es
@@ -225,13 +225,13 @@ source ~/.git-prompt.sh
 PS1='\[\033]0;\u@\h:\w\007\]\[\033[0;34m\][\[\033[0;31m\]\w\[\033[0;32m\]($(git branch 2>/dev/null | sed -n "s/\* \(.*\)/\1/p"))\[\033[0;34m\]]$'
 ```
 
-Y reiniciamos la terminal:
+Reiniciamos la terminal:
 ```
 usuario@iaas-dsi36:~$ exec bash -l
 [~()]$
 ```
 
-Para comprobar que el prompt realmente está mostrando lo que deseamos (la rama actual de trabajo al acceder a un directorio asociado a un repositorio), añadiremos la clave pública de la máuina virtual dentro de la configuación de las claves en nuestra cuenta de Github, para facilitarnos el trabajo con repositorios remotos o con clonaciones de los mismos.  
+Para comprobar que el prompt realmente está mostrando lo que deseamos (la rama actual de trabajo al acceder a un directorio asociado a un repositorio), añadiremos la clave pública de la máquina virtual dentro de la configuación de las claves en nuestra cuenta de Github, para facilitarnos el trabajo con repositorios remotos o con clonaciones de los mismos.  
 Copiaremos la clave pública en nuestra máquina virtual:
 ```
 [~()]$cat ~/.ssh/id_rsa.pub
