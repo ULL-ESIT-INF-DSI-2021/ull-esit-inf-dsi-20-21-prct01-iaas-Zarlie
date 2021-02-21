@@ -15,6 +15,7 @@ En primer lugar, para comenzar esta práctica debemos configurar el servicio VPN
 
 Una vez estemos conectados a la VPN, accederemos al [Servicio IaaS de la ULL](https://iaas.ull.es/) donde introduciremos nuestras credenciales ULL. Acto seguido, se mostrará un panel en el que puede que nos encontremos con más de una máquina virtual, las cuales correspondan a otras asignaturas del grado asociadas a nuestra cuenta. Ahora nos tocará localizar la máquina virtual de la asignatura la cual tendrá el nombre de *DSI* y pulsaremos sobre el botón de *Ejecutar*. Tras esperar unos segundos, podremos visualizar que se nos ha asignado una máquina virtual del pool de máquinas virtuales de la asignatura, ya que nuestra máquina pasará a tener un número como sufijo, por ejemplo, en mi caso trabajaré con la máquina DSI-36.
 
+
 ### **Dirección IP de la máquina y conexión a la misma por SSH**      
 Una vez dentro de nuestra máquina virtual, buscaremos en la parte derecha de la interfaz la sección de *Interfaces de red*, en ella podremos identificar la IP asignada a la interfaz de nuestra máquina la cual estará bajo la forma 10.6.XXX.XXX; en nuestro caso será 10.6.131.205. Esta IP nos servirá de ayuda para poder conectarnos por SSH a nuestra máquina virtual. 
 
@@ -92,9 +93,115 @@ zarlie@melinux-VirtualBox:~$ cat /etc/hosts
 10.6.131.205  iaas-dsi36
 ...
 ```
+El siguente paso será configurar la infraestructura de clave pública-privada en caso de no haberse hecho anteriormente:
+```
+zarlie@melinux-VirtualBox:~$  cat .ssh/id_rsa.pub
+cat: .ssh/id_rsa.pub: No existe el archivo o el directorio
+```
+Como podemos observar, en este caso aún no se habían generado el par de claves pública-privada, ya que no parece existir ninún archivo que las contenga (id_rsa para la clave privada e id_rsa.pub para la clave pública). Ejecutaremos el comando **ssh-keygen** para crear el par de claves RSA el cual nos irá generando un script de generación de claves al cual simplemente nos limitaremos a dejar los valores por defecto, para ello dejaremos vacíos todos los campos en los que nos pidan introducir un valor. Es muy importante no introducir ninguna passphrase asociada al par de claves.
+```
+zarlie@melinux-VirtualBox:~$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/zarlie/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase:
+Your identification has been saved in /home/zarlie/.ssh/id_rsa
+Your public key  has been saved in /home/zarlie/.ssh/id_rsa.pub
+...
+```
+Una vez generadas las claves, ejecutaremos el comando **ssh-copy-id**, este es un script que se conecta a la máquina y copia el archivo (indicado por la opción -i) en ~/.ssh/authorized_keys, y ajusta los permisos de forma adecuada. Nuevamente nos saldrá un mensaje de alerta de si queremos seguir con la conexión, al que deberemos introducir **"yes"** y acto seguido introduciremos nuestra contraseña y ya habremos añadido la clave:
+```
+zarlie@melinux-VirtualBox:~$ ssh-copy-id usuario@iaas-dsi36
+The authenticity of host 'iaas-dsi36 (10.6.131.205)' can't be established.
+ECDSA key fingerprint is SHA256:1Xm4M66FeBUSiykP7SqJgObwjmVs2gEouBhy1PTWDV4.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+/usr/bin/ssh-copy-id: INFO: attempting to log in with the new key(s), to filter out any that are already installed
+/usr/bin/ssh-copy-id: INFO: 1 key(s) remain to be installed -- if you are prompted now it is to install the new keys
+usuario@iaas-dsi36's password: 
+
+Number of key(s) added: 1
+
+Now try logging into the machine, with:   "ssh 'usuario@iaas-dsi36'"
+and check to make sure that only the key(s) you wanted were added.
+```
+Como nos indica el último mensaje del comando anteriormente ejecutado, intentaremos iniciar sesión en la máquina virtual ejecutando el siguiente comando:
+```
+zarlie@melinux-VirtualBox:~$  ssh usuario@iaas-dsi36
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-135-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Feb  21 19:26:27 WET 2021
+
+...
+
+Last login: Sun Feb  21 19:26:27 2021 from 10.20.52.107
+usuario@iaas-dsi36:~$
+```
+Como podemos observar, no ha habido ningún problema para acceder a la máquina virtual sin necesidad de tener que introducir una contraseña en la terminal. Por otro lado, el prompt de la máqina virtual también ha cambiado al nuevo nombre de host configurado previamente (en mi caso aparece como *usuario@iaas-dsi36~$*).  
+
+La última configuación que nos queda hacer en la máquina local es la de configuar el fichero **~/.ssh/config** para conectarnos mediante SSH a nuestra máquina virtual sin la necesidad de indicar un nombre de usuario, simplemente indicando el nombre de nuestra máquina:
+```
+zarlie@melinux-VirtualBox:~$ touch ~/.ssh/config 
+zarlie@melinux-VirtualBox:~$ vi ~/.ssh/config 
+zarlie@melinux-VirtualBox:~$ cat ~/.ssh/config 
+Host iaas-dsi36
+  HostName iaas-dsi36
+  User usuario
+```
+
+Ahora si tratamos de iniciar sesión simplemente indicando el nombre de nuestra máquina virtual podremos hacerlo:
+```
+zarlie@melinux-VirtualBox:~$ ssh iaas-dsi36
+Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-135-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
+
+  System information as of Sun Feb  21 19:38:00 WET 2021
+
+...
+
+Last login: Sun Feb  21 19:38:00 2021 from 10.20.52.107
+usuario@iaas-dsi36:~$
+```
+
+## Configuraciones en la máquina local
+Por último, nos queda generar las claves pública-privada en nuestra máquina virtual exactamente como hicimos anteriormente en nuestra máquina local:
+```
+usuario@iaas-dsi36:~$ ssh-keygen
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/zarlie/.ssh/id_rsa):
+Enter passphrase (empty for no passphrase):
+Enter same passphrase:
+Your identification has been saved in /home/zarlie/.ssh/id_rsa
+Your public key  has been saved in /home/zarlie/.ssh/id_rsa.pub
+...
+
+usuario@iaas-dsi36:~$ cat .ssh/id_rsa.pub
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDfCKDPGn7qLhwmjKCYaCBeOZVObmdHQ/GFOYALTU1Lmnjb108HGSr7aDaFZunI1TtwAKh1qGdo6LYCPECY+y90LA+vtRTdQnoPqGzsTctillZkRJoMv7beLhpHVKFadXNc/DKlwCU83uHwTRGmqb3OY5246rSIA+/blFpDEBpK088oXvTailphaCeZRHV+Qg12LJu5Q2uKBTjckU0yebz4Xx2wXjZQkpohX8PSOJpKy6QlNmG8j3DDY+qrRmy+LScRGyWHlqQIVR2YrejuHqs2mG1b8FSGNwUUCp20rc0TWV22ggjQxEmjCRAHIofRsZ7zN752aChLqWGXcDJLTI8d usuario@iaas-dsi36
+```
+
 
 
 ## Instalación de git y Node.js en la máquina virtual del IaaS
+Comenzaremos instalando git en nuestra máquina virtual:
+```
+usuario@iaas-dsi36:~$ sudo apt install git
+Leyendo lista de paquetes... Hecho
+Creando árbol de dependencias       
+Leyendo la información de estado... Hecho
+git ya está en su versión más reciente (1:2.25.1-1ubuntu3).
+Los paquetes indicados a continuación se instalaron de forma automática y ya no son necesarios.
+...
+```
+
+
+
+
 
 ## Bibliografía
 - (https://debian-handbook.info/browse/es-ES/stable/sect.hostname-name-service.html)
@@ -102,3 +209,5 @@ zarlie@melinux-VirtualBox:~$ cat /etc/hosts
 - (https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/hostname/)
 - (https://es.wikipedia.org/wiki/Archivo_hosts)
 - (https://www.linuxhispano.net/2013/05/03/diferencia-entre-apt-get-update-y-apt-get-upgrade/)
+- (https://www.tiendalinux.com/docs/manuales/redhat/rhl-rg-es-7.3/s1-ssh-configfiles.php3#:~:text=known_hosts%20%E2%80%94%20Este%20fichero%20contiene%20las,conectado%20al%20servidor%20SSH%20correcto.)
+- (https://uniwebsidad.com/libros/pro-git/capitulo-4/generando-tu-clave-publica-ssh)
