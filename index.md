@@ -43,7 +43,7 @@ usuario@ubuntu:~$ sudo vim /etc/hostname
 usuario@ubuntu:~$ cat /etc/hostname
 iaas-dsi36
 ```
-Además, también modificaremos el archivo /etc/hosts, donde se guarda la correspondencia entre dominios de Internet y direcciones IP:
+Además, también modificaremos el archivo /etc/hosts, donde se guarda la correspondencia entre dominios de Internet y direcciones IP. En él, cambiaremos el antiguo nombre de host ubuntu por el nombre de host (en mi caso iaas-dsi36):
 ```
 usuario@ubuntu:~$ cat /etc/hosts
 127.0.0.1   localhost
@@ -53,14 +53,38 @@ usuario@ubuntu:~$ cat /etc/hosts
 ::1       localhost ip6-localhost ip6-loopback
 ff02::1   ip6-allnoders
 ff02::2   ip6-allrouters
+
 usuario@ubuntu:~$ sudo vim /etc/hosts
 usuario@ubuntu:~$ cat /etc/hosts
 127.0.0.1   localhost
 127.0.1.1   iaas-dsi36
 ...
 ```
+Una vez hayamos completado todos los pasos anterioremos, pasaremos a actualizar el software de la máquina virtual antes de proceder a reiniciarla. Para ello usaremos 2 comandos: **sudo apt update** el cual actualizará la lista de paquetes disponibles y sus versiones, sin instalar o actualizar ningún paquete en concreto, y el **sudo apt upgrade**, el cual una vez el comando anterior ha descargado la lista de software disponible y la versión en la que se encuentra, actualizará e instalará las nuevas versiones de los paquetes.
+```
+usuario@ubuntu:~$ sudo apt update
+Leyendo lista de paquetes... Hecho
+Creando árbol de independencias
+Leyendo la inforkmación de estado... Hecho
+...
 
+usuario@ubuntu:~$ sudo apt upgrade
+...
+```
+Finalmente, reiniciamos la máquina:
+```
+usuario@ubuntu:~$ reboot
+Connection to 10.6.131.205 closed by remote host.
+Connection to 10.6.131.205 closed.
+```
 
 
 
 ## Instalación de git y Node.js en la máquina virtual del IaaS
+
+## Bibliografía
+- (https://debian-handbook.info/browse/es-ES/stable/sect.hostname-name-service.html)
+- (https://www.ionos.es/digitalguide/servidores/configuracion/archivo-hosts/)
+- (https://www.ionos.es/digitalguide/hosting/cuestiones-tecnicas/hostname/)
+- (https://es.wikipedia.org/wiki/Archivo_hosts)
+- (https://www.linuxhispano.net/2013/05/03/diferencia-entre-apt-get-update-y-apt-get-upgrade/)
