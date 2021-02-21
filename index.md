@@ -103,7 +103,7 @@ zarlie@melinux-VirtualBox:~$  cat .ssh/id_rsa.pub
 cat: .ssh/id_rsa.pub: No existe el archivo o el directorio
 ```
 Como podemos observar, en este caso aún no se habían generado el par de claves pública-privada, ya que no parece existir ningún archivo que las contenga (*id_rsa* para la clave privada e *id_rsa.pub* para la clave pública).  
-Ejecutaremos el comando **ssh-keygen** para crear el par de claves RSA el cual nos irá mostrando un script de generación de claves al cual simplemente nos limitaremos a dejar los valores por defecto, para ello dejaremos vacíos todos los campos en los que nos pidan introducir un valor. Es muy importante no introducir ninguna passphrase asociada al par de claves.
+Ejecutaremos el comando **ssh-keygen** para crear el par de claves RSA el cual nos irá mostrando un script de generación de claves al cual simplemente nos limitaremos a dejar los valores por defecto, para ello dejaremos vacíos todos los campos en los que nos pidan introducir algún valor. Es muy importante no introducir ninguna passphrase asociada al par de claves.
 ```
 zarlie@melinux-VirtualBox:~$ ssh-keygen
 Generating public/private rsa key pair.
@@ -114,7 +114,7 @@ Your identification has been saved in /home/zarlie/.ssh/id_rsa
 Your public key  has been saved in /home/zarlie/.ssh/id_rsa.pub
 ...
 ```
-Una vez generadas las claves, ejecutaremos el comando **ssh-copy-id**, este es un script que se conecta a la máquina y copia el archivo (indicado por la opción -i) en ~/.ssh/authorized_keys, y ajusta los permisos de forma adecuada. Nuevamente nos saldrá un mensaje de alerta de si queremos seguir con la conexión, al que deberemos introducir **"yes"** y acto seguido introduciremos nuestra contraseña y ya habremos añadido la clave:
+Una vez generadas las claves, ejecutaremos el comando ***ssh-copy-id***, este es un script que se conecta a la máquina y copia el archivo (indicado por la opción -i) en *~/.ssh/authorized_keys*, y ajusta los permisos de forma adecuada. Nuevamente nos saldrá un mensaje de alerta de si queremos seguir con la conexión, al que deberemos introducir **"yes"** y acto seguido introduciremos nuestra contraseña y ya habremos añadido la clave:
 ```
 zarlie@melinux-VirtualBox:~$ ssh-copy-id usuario@iaas-dsi36
 The authenticity of host 'iaas-dsi36 (10.6.131.205)' can't be established.
@@ -145,9 +145,9 @@ Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-135-generic x86_64)
 Last login: Sun Feb  21 19:26:27 2021 from 10.20.52.107
 usuario@iaas-dsi36:~$
 ```
-Como podemos observar, no ha habido ningún problema para acceder a la máquina virtual sin necesidad de tener que introducir una contraseña en la terminal. Por otro lado, el prompt de la máqina virtual también ha cambiado al nuevo nombre de host configurado previamente (en mi caso aparece como *usuario@iaas-dsi36~$*).  
+Como podemos observar, no ha habido ningún problema para acceder a la máquina virtual sin necesidad de tener que introducir una contraseña en la terminal. Por otro lado, el prompt de la máquina virtual también ha cambiado al nuevo nombre de host configurado previamente (en mi caso aparece como *usuario@iaas-dsi36~$*).  
 
-La última configuación que nos queda hacer en la máquina local es la de configuar el fichero **~/.ssh/config** para conectarnos mediante SSH a nuestra máquina virtual sin la necesidad de indicar un nombre de usuario, simplemente indicando el nombre de nuestra máquina:
+La última configuración que nos queda hacer en la máquina local es la de configuar el fichero ***~/.ssh/config*** para conectarnos mediante SSH a nuestra máquina virtual sin la necesidad de indicar un nombre de usuario:
 ```
 zarlie@melinux-VirtualBox:~$ touch ~/.ssh/config 
 zarlie@melinux-VirtualBox:~$ vi ~/.ssh/config 
@@ -157,7 +157,7 @@ Host iaas-dsi36
   User usuario
 ```
 
-Ahora si tratamos de iniciar sesión simplemente indicando el nombre de nuestra máquina virtual podremos hacerlo:
+Ahora si tratamos de iniciar sesión simplemente indicando el nombre de nuestra máquina virtual podremos hacerlo sin ningún problema:
 ```
 zarlie@melinux-VirtualBox:~$ ssh iaas-dsi36
 Welcome to Ubuntu 18.04.5 LTS (GNU/Linux 4.15.0-135-generic x86_64)
