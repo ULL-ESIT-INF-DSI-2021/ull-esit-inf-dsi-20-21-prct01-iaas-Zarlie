@@ -65,7 +65,7 @@ usuario@ubuntu:~$ cat /etc/hosts
 127.0.1.1   iaas-dsi36
 ...
 ```
-Una vez hayamos completado todos los pasos anteriores, pasaremos a actualizar el software de la máquina virtual antes de proceder a reiniciarla. Para ello usaremos 2 comandos: **sudo apt update** el cual actualizará la lista de paquetes disponibles y sus versiones, sin instalar o actualizar ningún paquete en concreto, y el **sudo apt upgrade**, el cual una vez el comando anterior ha descargado la lista de software disponible y la versión en la que se encuentra, actualizará e instalará las nuevas versiones de los paquetes.
+Una vez hayamos completado todos los pasos anteriores, pasaremos a actualizar el software de la máquina virtual antes de proceder a reiniciarla. Para ello usaremos 2 comandos: ***sudo apt update*** el cual actualizará la lista de paquetes disponibles y sus versiones, sin instalar o actualizar ningún paquete en concreto, y el ***sudo apt upgrade***, el cual una vez el comando anterior ha descargado la lista de software disponible y la versión en la que se encuentra, actualizará e instalará las nuevas versiones de los paquetes.
 ```
 usuario@ubuntu:~$ sudo apt update
 Leyendo lista de paquetes... Hecho
